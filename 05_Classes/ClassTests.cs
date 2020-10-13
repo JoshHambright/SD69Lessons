@@ -72,5 +72,70 @@ namespace _05_Classes
             Console.WriteLine(josh.Transport.TypeOfVehicle);
 
         }
+
+        [TestMethod]
+        public void FizzBuzz(int aNumber)
+        {
+            int i = 1;
+            int isThree;
+            int isFive;
+            while (i <= aNumber)
+            {
+                isThree = i % 3;
+                isFive = i % 5;
+                if (isThree == 0 && isFive == 0)
+                {
+                    Console.WriteLine("FizzBuzz");
+                    i++;
+                }
+                else if (isThree == 0)
+                {
+                    Console.WriteLine("Fizz");
+                    i++;
+                }
+                else if (isFive == 0)
+                {
+                    Console.WriteLine("Buzz");
+                    i++;
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                    i++;
+                }
+            }
+
+
+            /*
+//1
+int number = 100;
+int isThree = 1;
+int isFive = 1;
+//2
+for (int i = 1; i <= number; i++) //i is the loop control variable
+{
+    isThree = i % 3;
+    isFive = i % 5;
+    if ((isThree == 0) && (isFive == 0))
+    {
+        Console.WriteLine("FizzBuzz");
+        i = i + 1;
+    }
+    else if (isThree == 0)
+    {
+        Console.WriteLine("Fizz");
+    }
+
+    else if (isFive == 0)
+    {
+        Console.WriteLine("Buzz");
+
+    }
+    else
+    {
+        Console.WriteLine(i);
+    }
+  */
+        }
     }
 }

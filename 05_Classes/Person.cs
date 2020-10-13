@@ -46,5 +46,18 @@ namespace _05_Classes
             DateOfBirth = dob;
 
         }
+
+        //public void Ager(DateTime Birthday)
+        //{
+        //    double totalAgeInYears = ageSpan.TotalDays / 365.241;
+        //    int yearsOfAge = Convert.ToInt32(Math.Floor(totalAgeInYears));
+        //    Console.WriteLine(yearsOfAge);
+        //}
+
+        public double Quotient(int num1, int num2)
+        {
+            double aResult = num1 / num2;
+            return aResult;
+        }
     }
 }
