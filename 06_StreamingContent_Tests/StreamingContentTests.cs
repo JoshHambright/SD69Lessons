@@ -17,7 +17,7 @@ namespace _06_StreamingContent_Tests
             content.Title = "Toy Story";
 
             // Assert
-            Assert.AreEqual(content.Title, "Ttoy Story");
+            Assert.AreEqual(content.Title, "Toy Story");
 
         }
     }
