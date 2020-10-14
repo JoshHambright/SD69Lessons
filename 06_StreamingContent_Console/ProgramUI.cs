@@ -42,6 +42,7 @@ namespace _06_StreamingContent_Console
                         break;
                     case "2":
                         //get content by title
+                        ShowContentByTitle();
                         break;
                     case "3":
                         //Create new streaming content
@@ -52,6 +53,7 @@ namespace _06_StreamingContent_Console
                         break;
                     case "5":
                         //Remove streaming content
+                        DeleteContent();
                         break;
                     case "6":
                         //Exit app
@@ -73,12 +75,16 @@ namespace _06_StreamingContent_Console
 
             foreach (StreamingContent content in listOfContent)
             {
-                Console.WriteLine($"Title { content.Title}");
+                /*Console.WriteLine($"Title { content.Title}");
                 Console.WriteLine($"Description: {content.Description}");
                 Console.WriteLine($"Star Rating: {content.StarRating}");
                 Console.WriteLine($"Genre: {content.Genre}");
                 Console.WriteLine($"Maturity Rating: {content.MaturityRating}");
                 Console.WriteLine($"Family Friendly: {content.IsFamilyFriendly}");
+                */
+                DisplayContent(content);
+                Console.WriteLine();
+
             }
             Console.WriteLine("Press any key to continue.");
             Console.ReadKey();
@@ -160,15 +166,82 @@ namespace _06_StreamingContent_Console
             if (wasAdded == true)
             {
                 Console.WriteLine("Your Content was successfully added.");
+                Console.WriteLine("Press any key to return to menu.");
+
             }
             else
             {
                 Console.WriteLine("Opps. Something went wrong. Your Content was not added. Please try again");
+                Console.WriteLine("Press any key to return to menu.");
+    
             }
-
+            Console.ReadKey();
 
         }
 
+
+        private void ShowContentByTitle()
+        {
+            Console.Clear();
+            Console.WriteLine("Enter the title of the content you'd like to see.");
+            string title = Console.ReadLine();
+
+            StreamingContent content = _repo.GetContentByTitle(title);
+
+            if (content != null)
+            {
+                DisplayContent(content);
+                Console.WriteLine("Press any key to continue.");
+            }
+            else 
+            { 
+                Console.WriteLine("Title not found. Press and key to continue.");
+
+            }
+            Console.ReadKey();
+
+        }
+
+        private void DisplayContent(StreamingContent content)
+        {
+            Console.WriteLine($"Title { content.Title}");
+            Console.WriteLine($"Description: {content.Description}");
+            Console.WriteLine($"Star Rating: {content.StarRating}");
+            Console.WriteLine($"Genre: {content.Genre}");
+            Console.WriteLine($"Maturity Rating: {content.MaturityRating}");
+            Console.WriteLine($"Family Friendly: {content.IsFamilyFriendly}");
+        }
+    
+        private void DeleteContent()
+        {
+            Console.Clear();
+
+            Console.WriteLine("------Deleting Conent------");
+            Console.WriteLine("Currently Available Titles:");
+            List<StreamingContent> listOfContent = _repo.GetContents(); //Display all titles in the repo
+            foreach (StreamingContent content in listOfContent)
+            {
+                Console.WriteLine(content.Title);
+            }
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Please enter the title you would like to delete:");
+            string titleToDelete = Console.ReadLine();
+            StreamingContent contentToDelete = _repo.GetContentByTitle(titleToDelete);
+            
+            bool wasDeleted = _repo.DeleteExistingContent(contentToDelete); //Delete repo
+            if (wasDeleted == true)
+            {
+                Console.WriteLine("\"" + titleToDelete + "\" was successfully deleted.");
+                Console.WriteLine("Press any key to return to menu.");
+            }
+            else
+            {
+                Console.WriteLine("Opps. Something went wrong. Your Content was not Deleted. ");
+                Console.WriteLine("Press any key to return to menu.");
+            }
+
+            Console.ReadKey();
+        }
     }
 }
 
