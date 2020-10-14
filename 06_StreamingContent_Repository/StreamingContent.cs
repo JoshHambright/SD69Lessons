@@ -46,7 +46,7 @@ namespace _06_StreamingContent_Repository
     }
     public enum Genre
     {
-        Horror,
+        Horror = 1,
         RomCom,
         SciFi,
         Action,
@@ -58,7 +58,7 @@ namespace _06_StreamingContent_Repository
 
     public enum MaturityRating
     {
-        G,
+        G = 1,
         PG,
         PG_13,
         R,
