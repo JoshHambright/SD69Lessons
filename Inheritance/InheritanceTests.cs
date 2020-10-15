@@ -42,9 +42,10 @@ namespace Inheritance
 
             sloth.SayFurColor();
             Frog frog = new Frog();
-            Console.WriteLine(frog.canJump);
+            Console.WriteLine(frog.CanJump);
             Console.WriteLine(frog.HasFur);
-            List
+            frog.frogColor = FrogColor.Green;
+            Console.WriteLine(frog.frogColor);
         }
     }
 }

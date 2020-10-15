@@ -10,7 +10,8 @@ namespace _06_StreamingContent_Repository
     {
 
         private List<StreamingContent> _contentDirectory = new List<StreamingContent>();
-
+        List<StreamingContent> contentDirectory = new List<StreamingContent>();
+       
         public bool AddContentToDirectory(StreamingContent content)
         {
             int startingCount = _contentDirectory.Count;
@@ -19,6 +20,7 @@ namespace _06_StreamingContent_Repository
 
             bool wasAdded = (_contentDirectory.Count > startingCount) ? true : false;
             return wasAdded;
+
         }
 
         public List<StreamingContent> GetContents()

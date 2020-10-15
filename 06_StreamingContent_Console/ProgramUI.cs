@@ -14,7 +14,31 @@ namespace _06_StreamingContent_Console
 
         public void Run()
         {
+            SeedContent();
             Menu();
+        }
+
+        private void SeedContent()
+        {
+            StreamingContent futureWar = new StreamingContent(
+                "Future War",
+                "a war in the future",
+                10.0,
+                Genre.SciFi,
+                MaturityRating.PG_13
+                );
+
+            StreamingContent theRoom = new StreamingContent(
+                "The Room",
+                "Everyone betrays Johnny and he's fed up with this world",
+                10.0,
+                Genre.Documentary,
+                MaturityRating.R
+                );
+            _repo.AddContentToDirectory(futureWar);
+            _repo.AddContentToDirectory(theRoom);
+
+
         }
 
         private void Menu()
@@ -23,14 +47,16 @@ namespace _06_StreamingContent_Console
             while (continueToRun)
             {
                 Console.Clear();
-                Console.WriteLine(
-                    "Enter the number of the option you'd like to select: \n" +
-                    "1. Show all streaming content\n" +
-                    "2. Find streaming content by title \n" +
-                    "3. Add new streaming content \n" +
-                    "4. Update existing streaming content\n" +
-                    "5. Remove streaming content \n" +
-                    "6. Exit");
+                Console.WriteLine("----------------------------------------------------");
+                Console.WriteLine("Enter the number of the option you'd like to select:");
+                Console.WriteLine("1. Show all streaming content");
+                Console.WriteLine("1. Show all streaming content");
+                Console.WriteLine("2. Find streaming content by title");
+                Console.WriteLine("3. Add new streaming content");
+                Console.WriteLine("4. Update existing streaming content");
+                Console.WriteLine("5. Remove streaming content");
+                Console.WriteLine("6. Exit");
+                Console.WriteLine("----------------------------------------------------");
 
                 string input = Console.ReadLine();
 
@@ -50,6 +76,7 @@ namespace _06_StreamingContent_Console
                         break;
                     case "4":
                         // Update existing content
+                        UpdateContent();
                         break;
                     case "5":
                         //Remove streaming content
@@ -75,7 +102,7 @@ namespace _06_StreamingContent_Console
 
             foreach (StreamingContent content in listOfContent)
             {
-                /*Console.WriteLine($"Title { content.Title}");
+                /*Console.WriteLine($"Title: { content.Title}");
                 Console.WriteLine($"Description: {content.Description}");
                 Console.WriteLine($"Star Rating: {content.StarRating}");
                 Console.WriteLine($"Genre: {content.Genre}");
@@ -173,7 +200,7 @@ namespace _06_StreamingContent_Console
             {
                 Console.WriteLine("Opps. Something went wrong. Your Content was not added. Please try again");
                 Console.WriteLine("Press any key to return to menu.");
-    
+
             }
             Console.ReadKey();
 
@@ -193,12 +220,143 @@ namespace _06_StreamingContent_Console
                 DisplayContent(content);
                 Console.WriteLine("Press any key to continue.");
             }
-            else 
-            { 
+            else
+            {
                 Console.WriteLine("Title not found. Press and key to continue.");
 
             }
             Console.ReadKey();
+
+        }
+
+        private void UpdateContent()
+        {
+            Console.Clear();
+
+            Console.WriteLine("------Updating Conent------");
+            Console.WriteLine("Currently Available Titles:");
+            List<StreamingContent> listOfContent = _repo.GetContents(); //Display all titles in the repo
+            foreach (StreamingContent content in listOfContent)
+            {
+                Console.WriteLine(content.Title);
+            }
+            Console.WriteLine("---------------------------");
+            Console.WriteLine("Please enter the title you would like to delete:");
+            string titleToUpdate = Console.ReadLine();
+            StreamingContent contentToUpdate = _repo.GetContentByTitle(titleToUpdate);
+            if (contentToUpdate == null)
+            {
+                Console.WriteLine("Content not found, press any key to continue...");
+                Console.ReadKey();
+                return;
+            }
+            Console.Clear();
+            Console.WriteLine("------Updating Conent------");
+            DisplayContent(contentToUpdate);
+            Console.WriteLine("---------------------------");
+
+            StreamingContent newContent = new StreamingContent();
+
+            Console.WriteLine("Enter Title:");
+            newContent.Title = Console.ReadLine();
+
+            Console.WriteLine("Enter Description:");
+            newContent.Description = Console.ReadLine();
+
+            Console.WriteLine("Enter Star Rating(1.0-10.0):");
+            newContent.StarRating = Double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Ente number for Genre:");
+            Console.WriteLine("1. Horror");
+            Console.WriteLine("2. RomCom");
+            Console.WriteLine("3. Sci-Fi");
+            Console.WriteLine("4. Action");
+            Console.WriteLine("5. Documentary");
+            Console.WriteLine("6. Musical");
+            Console.WriteLine("7. Drama");
+            Console.WriteLine("8. Mystery");
+            /*string genreInput = Console.ReadLine();
+            int genreAsInt = int.Parse(genreInput);
+            newContent.Genre = (Genre)genreAsInt; */
+            newContent.Genre = (Genre)int.Parse(Console.ReadLine());
+
+            bool stopRunning = false;
+            while (!stopRunning) //Maturity Rating Loop
+            {
+                Console.WriteLine("Enter number for Content Rating:");
+                Console.WriteLine("1. G");
+                Console.WriteLine("2. PG");
+                Console.WriteLine("3. PG-13");
+                Console.WriteLine("4. R");
+                Console.WriteLine("5. NC-17");
+                //newContent.MaturityRating = (MaturityRating)int.Parse(Console.ReadLine());
+                string maturityRating = Console.ReadLine();
+                switch (maturityRating)
+                {
+                    case "1":
+                        newContent.MaturityRating = MaturityRating.G;
+                        stopRunning = true;
+                        break;
+                    case "2":
+                        newContent.MaturityRating = MaturityRating.PG;
+                        stopRunning = true;
+                        break;
+                    case "3":
+                        newContent.MaturityRating = MaturityRating.PG_13;
+                        stopRunning = true;
+                        break;
+                    case "4":
+                        newContent.MaturityRating = MaturityRating.R;
+                        stopRunning = true;
+                        break;
+                    case "5":
+                        newContent.MaturityRating = MaturityRating.NC_17;
+                        stopRunning = true;
+                        break;
+                    default:
+                        Console.WriteLine("Please enter a valid input.");
+                        break;
+
+
+                }
+            }                //Maturity Rating Loop
+
+            Console.Clear();
+            Console.WriteLine("------Replacing------");
+            DisplayContent(contentToUpdate);
+            Console.WriteLine("-----------With------------");
+            DisplayContent(newContent);
+            Console.WriteLine("---------------------------");
+
+            Console.WriteLine("Continue? (Type 'yes' or 'no')");
+            string continueUpdate = Console.ReadLine();
+
+            if (continueUpdate.ToLower() == "yes")
+            {
+                contentToUpdate = newContent;
+                bool wasAdded = _repo.AddContentToDirectory(newContent);
+                if (wasAdded == true)
+                {
+                    Console.WriteLine("Your Content was successfully updated.");
+                    Console.WriteLine("Press any key to return to menu.");
+
+                }
+                else
+                {
+                    Console.WriteLine("Opps. Something went wrong. Your Content was not added. Please try again");
+                    Console.WriteLine("Press any key to return to menu.");
+
+                }
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Update canceled. Press any key to return to Main Menu");
+                Console.ReadKey();
+            }
+
+
+
 
         }
 
@@ -211,7 +369,7 @@ namespace _06_StreamingContent_Console
             Console.WriteLine($"Maturity Rating: {content.MaturityRating}");
             Console.WriteLine($"Family Friendly: {content.IsFamilyFriendly}");
         }
-    
+
         private void DeleteContent()
         {
             Console.Clear();
@@ -227,7 +385,7 @@ namespace _06_StreamingContent_Console
             Console.WriteLine("Please enter the title you would like to delete:");
             string titleToDelete = Console.ReadLine();
             StreamingContent contentToDelete = _repo.GetContentByTitle(titleToDelete);
-            
+
             bool wasDeleted = _repo.DeleteExistingContent(contentToDelete); //Delete repo
             if (wasDeleted == true)
             {
