@@ -382,8 +382,10 @@ namespace _06_StreamingContent_Console
         private void DeleteContent()
         {
             Console.Clear();
-
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine("------Deleting Conent------");
+            Console.ResetColor();
             Console.WriteLine("Currently Available Titles:");
             List<StreamingContent> listOfContent = _repo.GetContents(); //Display all titles in the repo
             foreach (StreamingContent content in listOfContent)
@@ -391,24 +393,47 @@ namespace _06_StreamingContent_Console
                 Console.WriteLine(content.Title);
             }
             Console.WriteLine("---------------------------");
+
             Console.WriteLine("Please enter the title you would like to delete:");
             string titleToDelete = Console.ReadLine();
             StreamingContent contentToDelete = _repo.GetContentByTitle(titleToDelete);
 
-            bool wasDeleted = _repo.DeleteExistingContent(contentToDelete); //Delete repo
-            if (wasDeleted == true)
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine("------Deleting Conent------");
+            Console.ResetColor();
+            DisplayContent(contentToDelete);
+            Console.WriteLine("---------------------------");
+
+            Console.WriteLine("Continue? (Type 'yes' or 'no')");
+            string continueUpdate = Console.ReadLine();
+
+            if (continueUpdate.ToLower() == "yes" || continueUpdate.ToLower() == "y")
             {
-                Console.WriteLine("\"" + titleToDelete + "\" was successfully deleted.");
-                Console.WriteLine("Press any key to return to menu.");
+
+                bool wasDeleted = _repo.DeleteExistingContent(contentToDelete); //Delete repo
+                if (wasDeleted == true)
+                {
+                    Console.WriteLine("Your Content was successfully updated.");
+                    Console.WriteLine("Press any key to return to menu.");
+
+                }
+                else
+                {
+                    Console.WriteLine("Opps. Something went wrong. Your Content was not added. Please try again");
+                    Console.WriteLine("Press any key to return to menu.");
+
+                }
+                Console.ReadKey();
             }
             else
             {
-                Console.WriteLine("Opps. Something went wrong. Your Content was not Deleted. ");
-                Console.WriteLine("Press any key to return to menu.");
+                Console.WriteLine("Deletion canceled. Press any key to return to Main Menu");
+                Console.ReadKey();
             }
 
-            Console.ReadKey();
-        }
+         }
 
     }
 }
