@@ -50,7 +50,6 @@ namespace _06_StreamingContent_Console
                 Console.WriteLine("----------------------------------------------------");
                 Console.WriteLine("Enter the number of the option you'd like to select:");
                 Console.WriteLine("1. Show all streaming content");
-                Console.WriteLine("1. Show all streaming content");
                 Console.WriteLine("2. Find streaming content by title");
                 Console.WriteLine("3. Add new streaming content");
                 Console.WriteLine("4. Update existing streaming content");
@@ -235,11 +234,12 @@ namespace _06_StreamingContent_Console
 
             Console.WriteLine("------Updating Conent------");
             Console.WriteLine("Currently Available Titles:");
-            List<StreamingContent> listOfContent = _repo.GetContents(); //Display all titles in the repo
-            foreach (StreamingContent content in listOfContent)
-            {
-                Console.WriteLine(content.Title);
-            }
+            //List<StreamingContent> listOfContent = _repo.GetContents(); //Display all titles in the repo
+            //foreach (StreamingContent content in listOfContent)
+            //{
+            //    Console.WriteLine(content.Title);
+            //}
+            DisplayAllTitles();
             Console.WriteLine("---------------------------");
             Console.WriteLine("Please enter the title you would like to delete:");
             string titleToUpdate = Console.ReadLine();
@@ -331,10 +331,10 @@ namespace _06_StreamingContent_Console
             Console.WriteLine("Continue? (Type 'yes' or 'no')");
             string continueUpdate = Console.ReadLine();
 
-            if (continueUpdate.ToLower() == "yes")
+            if (continueUpdate.ToLower() == "yes" || continueUpdate.ToLower() == "y")
             {
-                contentToUpdate = newContent;
-                bool wasAdded = _repo.AddContentToDirectory(newContent);
+                
+                bool wasAdded = _repo.UpdateExistingContent(contentToUpdate.Title,newContent);
                 if (wasAdded == true)
                 {
                     Console.WriteLine("Your Content was successfully updated.");
@@ -358,6 +358,7 @@ namespace _06_StreamingContent_Console
 
 
 
+
         }
 
         private void DisplayContent(StreamingContent content)
@@ -368,6 +369,14 @@ namespace _06_StreamingContent_Console
             Console.WriteLine($"Genre: {content.Genre}");
             Console.WriteLine($"Maturity Rating: {content.MaturityRating}");
             Console.WriteLine($"Family Friendly: {content.IsFamilyFriendly}");
+        }
+        private void DisplayAllTitles()
+        {
+            List<StreamingContent> listOfContent = _repo.GetContents(); //Display all titles in the repo
+            foreach (StreamingContent content in listOfContent)
+            {
+                Console.WriteLine(content.Title);
+            }
         }
 
         private void DeleteContent()
@@ -400,6 +409,7 @@ namespace _06_StreamingContent_Console
 
             Console.ReadKey();
         }
+
     }
 }
 
