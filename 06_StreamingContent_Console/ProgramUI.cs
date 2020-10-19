@@ -1,4 +1,5 @@
 ﻿using _06_StreamingContent_Repository;
+using _09_StreamingContent_UIRefactor.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,10 @@ namespace _06_StreamingContent_Console
     {
         private StreamingContent_Repo _repo = new StreamingContent_Repo();
 
+        public ProgramUI(IConsole console)
+        {
+            _
+        }
         public void Run()
         {
             SeedContent();
