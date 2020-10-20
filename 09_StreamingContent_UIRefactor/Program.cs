@@ -13,7 +13,7 @@ namespace _09_StreamingContent_UIRefactor
         {
             FunConsole console = new FunConsole();
             ProgramUI ui = new ProgramUI(console);
-            ui.SayHello();
+            ui.Run();
         }
     }
 }

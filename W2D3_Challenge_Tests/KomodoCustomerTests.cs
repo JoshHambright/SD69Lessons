@@ -114,7 +114,7 @@ namespace W2D3_Challenge_Tests
             KomodoCustomer customer2 = new KomodoCustomer(001, "Smith", new DateTime(1982, 03, 28), new DateTime(2019, 01, 02));
 
 
-            repo.MessageCustomers();
+            //repo.MessageCustomers();
             Console.WriteLine("Hello world!");
             
         }

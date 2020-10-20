@@ -55,6 +55,10 @@
       <Project>{BC6CA272-73FA-4FF8-BD1D-2C001EB7F57D}</Project>
       <Name>06_StreamingContent_Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\09_StreamingContent_UIRefactor\09_StreamingContent_UIRefactor.csproj">
+      <Project>{C1EAC246-D790-4CE6-9133-FC6071F90D1C}</Project>
+      <Name>09_StreamingContent_UIRefactor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

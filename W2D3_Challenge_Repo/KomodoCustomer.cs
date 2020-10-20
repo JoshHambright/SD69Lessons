@@ -52,20 +52,20 @@ namespace W2D3_Challenge_Repo
         //    }
         //}
 
-        public bool IsGoldMember
-        {
-            get
-            {
-                if (YearsOfEnrollment >= 5)
-                {
-                    Console.WriteLine("Thank you for being a gold member");
-                }
-                else
-                {
-                    return false;
-                }
-            }
-        }
+        //public bool IsGoldMember
+        //{
+        //    get
+        //    {
+        //        if (YearsOfEnrollment >= 5)
+        //        {
+        //            Console.WriteLine("Thank you for being a gold member");
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //}
 
         public KomodoCustomer() { }
 
@@ -77,13 +77,13 @@ namespace W2D3_Challenge_Repo
             EnrollmentDate = enrollmentdate;
         }
         
-        public string GetGreetingMessage()
-        {
-            if (IsGoldMember)
-            {
-                return "Hello Gold Member, Thank you for being a loyal Gold Customer!!";
-            }
-            return "Thanks for being a customer!";
-        }
+        //public string GetGreetingMessage()
+        //{
+        //    if (IsGoldMember)
+        //    {
+        //        return "Hello Gold Member, Thank you for being a loyal Gold Customer!!";
+        //    }
+        //    return "Thanks for being a customer!";
+        //}
     }
 }

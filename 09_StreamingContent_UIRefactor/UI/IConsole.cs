@@ -14,7 +14,7 @@ namespace _09_StreamingContent_UIRefactor.UI
         void Write(string s);
         void Clear();
         string ReadLine();
-        ConsoleKeyInfo Readkey();
+        ConsoleKeyInfo ReadKey();
 
 
     }

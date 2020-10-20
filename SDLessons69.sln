@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W2D3_Challenge_Repo", "W2D3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "09_StreamingContent_UIRefactor", "09_StreamingContent_UIRefactor\09_StreamingContent_UIRefactor.csproj", "{C1EAC246-D790-4CE6-9133-FC6071F90D1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W3D1_Challenge_Interfaces", "W3D1_Challenge_Interfaces\W3D1_Challenge_Interfaces.csproj", "{B1B8E86F-86B2-45DA-ACE3-72F0558C9018}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{C1EAC246-D790-4CE6-9133-FC6071F90D1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1EAC246-D790-4CE6-9133-FC6071F90D1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1EAC246-D790-4CE6-9133-FC6071F90D1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1B8E86F-86B2-45DA-ACE3-72F0558C9018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B8E86F-86B2-45DA-ACE3-72F0558C9018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B8E86F-86B2-45DA-ACE3-72F0558C9018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B8E86F-86B2-45DA-ACE3-72F0558C9018}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

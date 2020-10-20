@@ -16,7 +16,7 @@ namespace _09_StreamingContent_UIRefactor.UI
         {
             return Console.ReadLine();
         }
-        public ConsoleKeyInfo Readkey()
+        public ConsoleKeyInfo ReadKey()
         {
             return Console.ReadKey();
         }

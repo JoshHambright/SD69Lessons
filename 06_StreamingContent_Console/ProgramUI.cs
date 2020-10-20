@@ -15,8 +15,9 @@ namespace _06_StreamingContent_Console
 
         public ProgramUI(IConsole console)
         {
-            _
+           // _console = console;
         }
+
         public void Run()
         {
             SeedContent();

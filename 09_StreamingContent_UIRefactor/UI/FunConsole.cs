@@ -33,7 +33,7 @@ namespace _09_StreamingContent_UIRefactor.UI
             }
             return newInput;
         }
-        public ConsoleKeyInfo Readkey()
+        public ConsoleKeyInfo ReadKey()
         {
             return Console.ReadKey();
         }
