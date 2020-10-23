@@ -21,7 +21,30 @@ namespace _06_StreamingContent_Repository.Content
 
     public class Episode
     {
-        public string Title { get; set; }
+        //Backing Field
+        private string _title;
+        //Property
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                if (value[0].ToString().ToLower() == value[0].ToString())
+                {
+                    string capitalizedTitle = "";
+                    capitalizedTitle += value[0].ToString().ToUpper();
+                    capitalizedTitle += value.Substring(1);
+                    _title = capitalizedTitle; 
+                }
+                else
+                {
+                    _title = value;
+                }
+            }
+        }
         public double RunTime { get; set; }
         public int SeasonNumber { get; set; }
         public Episode() { }
