@@ -49,7 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DadJokeService.cs" />
+    <Compile Include="Models\Character.cs" />
+    <Compile Include="Models\CharacterWithHomeworld.cs" />
+    <Compile Include="Models\Planet.cs" />
+    <Compile Include="Services\DadJokeService.cs" />
     <Compile Include="Models\DadJoke.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\TacoParts\Base_Layer.cs" />
@@ -60,8 +63,9 @@
     <Compile Include="Models\TacoRecipe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TacoService.cs" />
-    <Compile Include="SwapiService.cs" />
+    <Compile Include="Services\MySwapiService.cs" />
+    <Compile Include="Services\TacoService.cs" />
+    <Compile Include="Services\SwapiService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
