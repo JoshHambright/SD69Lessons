@@ -57,7 +57,31 @@ namespace _11_RestaurantRater.Controllers
         }
 
         //Update
+        [HttpPut]
+        public async Task<IHttpActionResult> UpdateRestaurant([FromUri] int id, [FromBody] Restaurant model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState); //400
+            }
 
+            Restaurant restaurant = await _context.Restaurants.FindAsync(id);
+
+            if(restaurant == null)
+            {
+                return NotFound(); //404
+            }
+
+            restaurant.Name = model.Name;
+            restaurant.Address = model.Address;
+            restaurant.Rating = model.Rating;
+
+            if (await _context.SaveChangesAsync() == 1)
+            {
+                return Ok(); // 200
+            }
+            return InternalServerError(); //500
+        }
         //Delete
         [HttpDelete]
         public async Task<IHttpActionResult> DeleteRestaurantById(int id)
