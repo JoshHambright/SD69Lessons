@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "W3D1_Challenge_Interfaces",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10_IntroToAPIs", "10_IntroToAPIs\10_IntroToAPIs.csproj", "{DE3282D8-8270-491D-837C-157B28302DB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11_RestaurantRater", "11_RestaurantRater\11_RestaurantRater.csproj", "{93C23242-0F32-44DC-A53B-4A95FCA953F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{DE3282D8-8270-491D-837C-157B28302DB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE3282D8-8270-491D-837C-157B28302DB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE3282D8-8270-491D-837C-157B28302DB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93C23242-0F32-44DC-A53B-4A95FCA953F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93C23242-0F32-44DC-A53B-4A95FCA953F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93C23242-0F32-44DC-A53B-4A95FCA953F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93C23242-0F32-44DC-A53B-4A95FCA953F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
