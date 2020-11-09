@@ -17,6 +17,11 @@ namespace _11_RestaurantRater.Controllers
         // Create
 
         //POST
+        /// <summary>
+        /// Add a new Restaurant
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<IHttpActionResult> PostRestaurant(Restaurant model)
         {
@@ -35,6 +40,10 @@ namespace _11_RestaurantRater.Controllers
         //Read
 
         //GET ALL
+        /// <summary>
+        /// Get All Restaurants
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IHttpActionResult> Get()
         {
@@ -74,7 +83,7 @@ namespace _11_RestaurantRater.Controllers
 
             restaurant.Name = model.Name;
             restaurant.Address = model.Address;
-            restaurant.Rating = model.Rating;
+            //restaurant.Rating = model.Rating;
 
             if (await _context.SaveChangesAsync() == 1)
             {

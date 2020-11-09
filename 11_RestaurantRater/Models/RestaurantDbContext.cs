@@ -12,5 +12,6 @@ namespace _11_RestaurantRater.Models
         public RestaurantDbContext() : base("DefaultConnection") { }
         // Defines our Restaurants  - EntityFramework will convert our SQL db table into a collection of C# objects
         public DbSet<Restaurant> Restaurants { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
     }
 }

@@ -11,11 +11,30 @@ namespace _11_RestaurantRater.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        [MaxLength(200)]
+        [MaxLength(20)]
         public string Name { get; set; }
         [Required]
         public string Address { get; set; }
         [Required]
-        public double Rating { get; set; }
+        public double Rating
+        {
+            get
+            {
+                double totalRatingScore = 0;
+                foreach (Rating rating in Ratings)
+                {
+                    totalRatingScore += rating.AvarageRatting;
+                }
+                if (Ratings.Count == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return totalRatingScore / Ratings.Count;
+                }
+            }
+        }
+        public virtual List<Rating> Ratings { get; set; } = new List<Rating>();
     }
 }
